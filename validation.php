@@ -34,7 +34,10 @@
     <p ng-bind="url"></p>
 
     <p>
-      <input type="submit">
+      <input type="submit" ng-disabled="
+        myForm.user.$dirty && myForm.user.$invalid
+        || myForm.email.$dirty && myForm.email.$invalid
+        || myForm.url.$dirty && myForm.url.$invalid">
     </p>
   </div>
 </form>
