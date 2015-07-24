@@ -6,7 +6,7 @@
 <h2>Textarea</h2>
 
 
-<form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
+<form method="post" action="aksi.php" ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
     <p>Comment<br>
       <textarea rows="8" cols="100" ng-bind="textarea"></textarea>
 
@@ -28,7 +28,10 @@
 										document.getElementById("txtLen").style.color='';
 									}
 		</script>
+    <input type="submit" value="Send" />
+
 </form>
+
 <script>
 var app = angular.module('myApp', []);
 app.controller('validateCtrl', function($scope) {
