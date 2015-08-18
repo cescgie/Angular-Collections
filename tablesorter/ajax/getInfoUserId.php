@@ -1,10 +1,12 @@
 <?php
 require_once '../includes/db.php'; // The mysql database connection script
-$status = '%';
-if(isset($_GET['datum'])){
+$datum = '%';
+$uid = '%';
+if(isset($_GET['datum']) && isset($_GET['userid'])){
 $datum = $_GET['datum'];
+$uid = $_GET['userid'];
 }
-$query="SELECT UserId,Summe,Uhrzeit,DateEntered FROM userid_ga WHERE DateEntered = '$datum' AND UserId!='0000000000000000' AND Uhrzeit>20 HAVING Summe > 2000 ORDER BY Summe DESC";
+$query="SELECT * FROM uid_webid WHERE UserId = '$uid' AND Date(DateEntered) = '$datum' ORDER BY Hour,IpAddress ASC";
 
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 

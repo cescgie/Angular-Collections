@@ -4,16 +4,35 @@ var app = angular.module('myApp', []);
 app.controller('tasksController', function($scope, $http) {
   //getTask(); // Load all available tasks
   getDatum();
-  //getUserId();
+
+  /*
+  * Get Datumseinträge
+  */
   function getDatum(){
   $http.post("ajax/getDatum.php").success(function(data){
         $scope.datums = data;
        });
   };
 
+  /*
+  * Get UserId from datum
+  */
   $scope.getUid = function (datum) {
     $http.post("ajax/getUserId.php?datum="+datum.DateEntered).success(function(data){
         $scope.userids = data;
+      });
+  };
+
+  /*
+  * Get InfoUserId from UserId & datum
+  */
+  $scope.getInfoUid = function (userid,datum) {
+    $http.post("ajax/getInfoUserId.php?datum="+datum+"&userid="+userid).success(function(data){
+        $scope.userids2 = data;
+        console.log(datum);
+        console.log(userid);
+        var fbcanvas = document.getElementById('uid');
+        fbcanvas.innerHTML = "Info von UserId <span style='color: #ff0000'> "+userid+" </span>:";
       });
   };
 

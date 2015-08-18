@@ -20,10 +20,27 @@
 
 <div class="datum">
 	<table border="1">
-		<?php $i=0;?>
 	<tr ng-repeat="userid in userids track by userid.UserId| filter : filterDatum">
-			<td>{{userid.UserId}}</td>
+			<td><a ng-click="getInfoUid(userid.UserId,userid.DateEntered)">{{userid.UserId}}</a></td>
 			<td>{{userid.Summe}}</td>
+		</tr>
+	</table>
+</div>
+<hr>
+<?php
+if(isset($_GET['userid'])){
+$uid = $_GET['userid'];
+echo $uid;
+}
+?>
+<p><span id="uid"></span></p>
+<div class="userid">
+	<table border="1">
+	<tr ng-repeat="userid2 in userids2">
+			<td>{{userid2.WebsiteId}}</a></td>
+			<td>{{userid2.IpAddress}}</td>
+			<td>{{userid2.Hour}}</td>
+			<td>{{userid2.Summe}}</td>
 		</tr>
 	</table>
 </div>

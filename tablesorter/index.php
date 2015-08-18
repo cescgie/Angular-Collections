@@ -25,7 +25,7 @@
     		<!--<blockquote><h1><a href="http://angularcode.com/simple-task-manager-application-using-angular-js-php-mysql/">Task Manager Application using Angular JS</a></h1></blockquote>-->
     		<div class="col-sm-9">
     			<!--<div ng-include src="'partials/task.html'"></div>-->
-          <div ng-include src="'partials/datum.html'"></div>
+          <div ng-include src="'partials/datum.php'"></div>
 
     		</div>
 
