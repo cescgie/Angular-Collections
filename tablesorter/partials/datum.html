@@ -9,17 +9,23 @@
 </div>
 <div class="col-sm-3">
 
-<input type="text" ng-model="filterDatum" class="form-control search header-elements-margin" placeholder="Filter Datum">
+<!--<input type="text" ng-model="filterDatum" class="form-control search header-elements-margin" placeholder="Filter Datum">-->
+<select data-ng-options="datum.DateEntered for datum in datums track by datum.DateEntered" ng-model="filterDatum" ng-change="getUid(filterDatum)" class="form-control search header-elements-margin">
+ <option style="display:none" value="">Select ein Datum</option>
+</select>
 
 </div>
 </div></div>
 <div class="widget-body ">
 
-</form>
 <div class="datum">
-	<label class="checkbox" ng-repeat="datum in datums | filter : filterDatum">
-	<span ng-class="{strike:datum.ID==1}">{{datum.DateEntered}}</span>
-    </label>
+	<table border="1">
+		<?php $i=0;?>
+	<tr ng-repeat="userid in userids track by userid.UserId| filter : filterDatum">
+			<td>{{userid.UserId}}</td>
+			<td>{{userid.Summe}}</td>
+		</tr>
+	</table>
 </div>
 </div>
 </div>

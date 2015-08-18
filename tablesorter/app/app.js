@@ -4,6 +4,19 @@ var app = angular.module('myApp', []);
 app.controller('tasksController', function($scope, $http) {
   //getTask(); // Load all available tasks
   getDatum();
+  //getUserId();
+  function getDatum(){
+  $http.post("ajax/getDatum.php").success(function(data){
+        $scope.datums = data;
+       });
+  };
+
+  $scope.getUid = function (datum) {
+    $http.post("ajax/getUserId.php?datum="+datum.DateEntered).success(function(data){
+        $scope.userids = data;
+      });
+  };
+
   function getTask(){
   $http.post("ajax/getTask.php").success(function(data){
         $scope.tasks = data;
@@ -33,10 +46,15 @@ app.controller('tasksController', function($scope, $http) {
   /*
   * get Datum
   */
-  function getDatum(){
-  $http.post("ajax/getDatum.php").success(function(data){
-        $scope.datums = data;
+
+  /*
+  * getUserId
+  */
+  /*function getUserId(){
+  $http.post("ajax/getUserId.php").success(function(data){
+        $scope.userids = data;
        });
-  };
+  };*/
+
 
 });

@@ -26,11 +26,11 @@
     		<div class="col-sm-9">
     			<!--<div ng-include src="'partials/task.html'"></div>-->
           <div ng-include src="'partials/datum.html'"></div>
+
     		</div>
 
     	</div>
     </div>
-
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="app/app.js"></script>
     </body>
