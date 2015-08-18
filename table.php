@@ -19,7 +19,7 @@ table tr:nth-child(even) {
   <div ng-app="myApp" ng-controller="customersCtrl">
 
   <table>
-    <tr ng-repeat="x in names | orderBy : 'Country'">
+    <tr ng-repeat="x in names | orderBy : 'Name'">
       <td>{{ $index + 1 }}</td>
       <td>{{ x.Name }}</td>
       <td>{{ x.Country }}</td>
