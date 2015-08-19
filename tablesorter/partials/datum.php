@@ -68,7 +68,7 @@
 							<th id="center" width="80px">Datum</th>
 						</tr>
 						<tr ng-repeat="ipaddress in ipaddresses">
-								<td id="center"><p><a  class="click" href="#" ng-click="getInfoUid(ipaddress.UserId,ipaddress.DateEntered)">{{ipaddress.UserId}}</a></p></td>
+								<td id="center"><p><a  class="click" href="#" ng-click="getInfoUidIp(ipaddress.UserId,ipaddress.DateEntered,ipaddress.WebsiteId,ipaddress.IpAddress)">{{ipaddress.UserId}}</a></p></td>
 								<td id="center"><p>{{ipaddress.WebsiteId}}</p></td>
 								<td id="center"><p>{{ipaddress.DateEntered}}</p></td>
 							</tr>
