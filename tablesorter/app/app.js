@@ -20,6 +20,8 @@ app.controller('tasksController', function($scope, $http) {
   $scope.getUid = function (datum) {
     $http.post("ajax/getUserId.php?datum="+datum.DateEntered).success(function(data){
         $scope.userids = data;
+        var element = document.getElementById('verdacht');
+        element.innerHTML = "<p>verdaechtige UserId am <span style='color: #ff0000'>"+datum.DateEntered+"</span><p>";
       });
   };
 
@@ -32,7 +34,33 @@ app.controller('tasksController', function($scope, $http) {
         console.log(datum);
         console.log(userid);
         var fbcanvas = document.getElementById('uid');
-        fbcanvas.innerHTML = "Info von UserId <span style='color: #ff0000'> "+userid+" </span>:";
+        fbcanvas.innerHTML =
+        "<p>Info von UserId <span style='color: #ff0000'>"+userid+"</span> am <span style='color: #ff0000'>"+datum+"</span></p>";
+
+        //Change a-tag background-color after click
+        $('a').on('click', function(){
+          $('a').css("background-color","");
+          $(this).css("background-color","yellow");
+        });
+      });
+  };
+
+  /*
+  * Get InfoIpAddress from IpAddress, UserId & datum
+  */
+  $scope.getInfoIp = function (ip) {
+    $http.post("ajax/getInfoIpAddress.php?ip="+ip).success(function(data){
+        $scope.ipaddresses = data;
+        console.log(ip);
+        //console.log(data);
+        var element = document.getElementById('ip_p');
+        element.innerHTML = "<p>Info von IpAddress <span style='color: #ff0000'>"+ip+"</span></p>";
+
+        //Change a-tag background-color after click
+        $('a').on('click', function(){
+          $('a').css("background-color","");
+          $(this).css("background-color","yellow");
+        });
       });
   };
 
@@ -61,19 +89,4 @@ app.controller('tasksController', function($scope, $http) {
         getTask();
       });
   };
-
-  /*
-  * get Datum
-  */
-
-  /*
-  * getUserId
-  */
-  /*function getUserId(){
-  $http.post("ajax/getUserId.php").success(function(data){
-        $scope.userids = data;
-       });
-  };*/
-
-
 });
